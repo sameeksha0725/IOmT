@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tactical IoMT soldier monitoring system demo dashboard">
+  <title>Tactical IoMT | Soldier Monitoring System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <p class="brand-name">TACTICAL <strong>IoMT</strong></p>
+          <p class="brand-caption">COMMAND CENTER</p>
+        </div>
+        <button class="icon-button sidebar-close" id="sidebarClose" aria-label="Close navigation">Close</button>
+      </div>
+      <div class="demo-label"><span class="demo-dot"></span> DEMO ENVIRONMENT</div>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <p class="nav-label">Monitoring</p>
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon"></span> Dashboard</button>
+        <button class="nav-item" data-view="soldiers"><span class="nav-icon"></span> Soldier Details</button>
+        <button class="nav-item" data-view="live"><span class="nav-icon"></span> Live Monitoring</button>
+        <button class="nav-item" data-view="sensors"><span class="nav-icon"></span> Sensor Data</button>
+        <p class="nav-label nav-label-spaced">Operations</p>
+        <button class="nav-item" data-view="alerts"><span class="nav-icon"></span> Alerts <span class="nav-count" id="navAlertCount">02</span></button>
+        <button class="nav-item" data-view="gas"><span class="nav-icon"></span> Hazardous Gas Database</button>
+        <button class="nav-item" data-view="network"><span class="nav-icon"></span> Network Status</button>
+        <button class="nav-item" data-view="reports"><span class="nav-icon"></span> Reports</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="system-pulse"><span class="pulse-dot"></span><div><strong>System online</strong><small>All core services operational</small></div></div>
+        <div class="sidebar-meta"><span>v1.0.0-demo</span><span>ESP32 / LoRa / MQTT</span></div>
+      </div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobileScrim"></div>
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open navigation">Menu</button>
+        <div class="breadcrumb"><span>Command Center</span><b>/</b><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <div class="top-status"><span class="pulse-dot"></span> System online</div>
+          <div class="top-time" id="topTime">13 Sep 2026, 09:45:00</div>
+          <button class="avatar" aria-label="User profile">CC</button>
+        </div>
+      </header>
+      <div id="app" class="page-wrap"></div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close icon-button" id="modalClose" aria-label="Close dialog">&times;</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>
